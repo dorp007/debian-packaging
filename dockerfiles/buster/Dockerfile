@@ -15,11 +15,17 @@ RUN echo 'PATH="$HOME/.local/bin:$PATH"' >> /etc/profile.d/user-local-path.sh
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=863199
 RUN apt-get update \
   && mkdir -p /usr/share/man/man1 \
-  && apt-get install -y \
+  && apt-get -y install \
     git mercurial xvfb apt \
     locales sudo openssh-client ca-certificates tar gzip parallel \
     net-tools netcat unzip zip bzip2 gnupg curl wget make python3 python3-venv python3-pip
 
+# apt (2.3.12) unstable; urgency=medium
+# The solver will no longer try to remove Essential or Protected packages,
+# any dependency problem that would need such a solution will have to be
+# resolved manually.
+
+RUN apt-get clean
 
 # Set timezone to UTC by default
 RUN ln -sf /usr/share/zoneinfo/Etc/UTC /etc/localtime
