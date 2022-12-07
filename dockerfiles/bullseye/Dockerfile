@@ -1,5 +1,5 @@
 # We want to do things using Debian Bullseye's own Python
-FROM debian:bullseye
+FROM debian:11.5
 
 # make Apt non-interactive
 RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci \
