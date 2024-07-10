@@ -1,3 +1,4 @@
 pytest
 pytest-mock
 virtualenv<16
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
